@@ -201,12 +201,9 @@ namespace QUANLYBANHANG
                     cbbMaKhachHang.Focus();
                     return;
                 }
-                sql = "insert into tblHDBan (MaHDBan,NgayBan,MaNhanVien,MaKhach,TongTien) " +
-                                            "values (N'" + txtMaHoaDon.Text +
-                                             "','" + dtNgayban.Value + "',N'" +
-                                             cbbMaNhanVien.SelectedValue + "',N'" +
-                                             cbbMaKhachHang.SelectedValue + "'," +
-                                             txtTongTien.Text + ")";
+                sql = "insert into tblHDBan (MaHDBan,NgayBan,MaNhanVien,MaKhach,TongTien,PhuongThuc) " +
+                                            "values (N'" + txtMaHoaDon.Text + "','" + dtNgayban.Value + "',N'" + cbbMaNhanVien.SelectedValue + "',N'" + cbbMaKhachHang.SelectedValue + "'," +
+                                             txtTongTien.Text + ",N'" + cbPhuongThuc.SelectedItem.ToString() + "')";
                 Functions.RunSQL(sql);
             }
             // luu thong tin cac mat hang
@@ -246,10 +243,11 @@ namespace QUANLYBANHANG
                 txtSoLuong.Focus();
                 return;
             }
-            sql = " insert into tblChiTietHDBan (MaHDBan,MaSanPham,SoLuong,DonGia,GiamGia,ThanhTien) " +
+            sql = " insert into tblChiTietHDBan (MaHDBan,MaSanPham,SoLuong,DonGia,GiamGia,ThanhTien,PhuongThuc) " +
                                         "values (N'" + txtMaHoaDon.Text + "',N'" + cbbMaSanPham.SelectedValue +
                                                 "'," + txtSoLuong.Text + "," + txtDonGia.Text + "," + txtGiamGia.Text +
-                                                "," + txtThanhTien.Text + ")";
+                                                "," + txtThanhTien.Text +
+                                                ",N'" + cbPhuongThuc.SelectedItem.ToString() + "')";
             Functions.RunSQL(sql);
             Load_dtgv();
             // cap nhat so luong mat hang vao tblHang
