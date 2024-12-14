@@ -21,24 +21,27 @@ namespace QUANLYBANHANG
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string sql;
-            if ((txtMaSanPham.Text == "") && (txtTenSanPham.Text == ""))
+            string sql, maSP, tenSP, maChatLieu;
+            if ((txtMaSanPham.Text == "") && (txtTenSanPham.Text == "") && cbbMaChatLieu == null)
             {
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!", "Yêu cầu .. ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             sql = "select * from tblHang where 1=1";
+            maSP = txtMaSanPham.Text.Trim();
+            tenSP = txtTenSanPham.Text.Trim();
+            maChatLieu = cbbMaChatLieu.Text.Trim();
             if (txtMaSanPham.Text != "")
             {
-                sql += sql + "and MaHang like N'%" + txtMaSanPham.Text + "%'";
+                sql += "and lower(MaSanPham) like N'%" + maSP.ToLower() + "%'";
             }
             if (txtTenSanPham.Text != "")
             {
-                sql += sql + "and TenHang = " + txtTenSanPham.Text;
+                sql += "and lower(TenSanPham) like N'%" + tenSP.ToLower() + "%'";
             }
             if (cbbMaChatLieu.Text != "")
             {
-                sql += "and MaChatLieu like N'%" + cbbMaChatLieu.SelectedValue + "%'";
+                sql += "and lower(MaChatLieu) like N'%" + maChatLieu.ToLower() + "%'";
             }
             tblHang = Functions.GetDataTable(sql);
             if (tblHang.Rows.Count == 0)
@@ -73,6 +76,7 @@ namespace QUANLYBANHANG
             dtgvHang.Columns[7].Width = 300;
 
             dtgvHang.AllowUserToAddRows = false;
+            dtgvHang.AllowUserToDeleteRows = false;
             dtgvHang.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
         private void ResetValues()
@@ -111,18 +115,18 @@ namespace QUANLYBANHANG
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            txtMaSanPham.Text = dtgvHang.CurrentRow.Cells["MaHang"].Value.ToString();
-            txtTenSanPham.Text = dtgvHang.CurrentRow.Cells["TenHang"].Value.ToString();
+            txtMaSanPham.Text = dtgvHang.CurrentRow.Cells["MaSanPham"].Value.ToString();
+            txtTenSanPham.Text = dtgvHang.CurrentRow.Cells["TenSanPham"].Value.ToString();
             MaChatLieu = dtgvHang.CurrentRow.Cells["MaChatLieu"].Value.ToString();
             sql = "select TenChatLieu from tblChatLieu where MaChatLieu = N'" + MaChatLieu + "'";
             cbbMaChatLieu.Text = Functions.GetFieldValues(sql);
-            sql = "select Anh from tblHang where MaHang = N'" + txtMaSanPham.Text + "'";
+            sql = "select Anh from tblHang where MaSanPham = N'" + txtMaSanPham.Text + "'";
             txtAnh.Text = Functions.GetFieldValues(sql);
             pic.Image = Image.FromFile(txtAnh.Text);
-            sql = "select GhiChu from tblHang where MaHang = N'" + txtMaSanPham.Text + "'";
+            sql = "select GhiChu from tblHang where MaSanPham = N'" + txtMaSanPham.Text + "'";
         }
 
-        private void txtTenHang_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtTenSanPham_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsControl(e.KeyChar) || Char.IsLetterOrDigit(e.KeyChar))
             {
@@ -131,7 +135,7 @@ namespace QUANLYBANHANG
             }
             else
             {
-                e.Handled = true;
+                e.Handled = false;
                 errorProvider1.SetError(txtTenSanPham, "Nhập lại");
             }
         }

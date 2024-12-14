@@ -83,5 +83,11 @@ namespace QUANLYBANHANG
         {
             this.Close();
         }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTimKhach khach = new frmTimKhach();
+            khach.ShowDialog();
+        }
     }
 }

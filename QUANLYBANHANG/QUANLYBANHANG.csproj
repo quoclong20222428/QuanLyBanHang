@@ -139,6 +139,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTimKhach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimKhach.Designer.cs">
+      <DependentUpon>frmTimKhach.cs</DependentUpon>
+    </Compile>
     <Compile Include="HT.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimKhach.resx">
+      <DependentUpon>frmTimKhach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HT.resx">
       <DependentUpon>HT.cs</DependentUpon>

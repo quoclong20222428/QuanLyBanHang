@@ -56,6 +56,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbPhuongThuc = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.lblBangChu = new System.Windows.Forms.Label();
@@ -73,12 +75,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.cbbMaSanPham = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.cbbMaHDBan = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cbPhuongThuc = new System.Windows.Forms.ComboBox();
+            this.cbbMaHDBan = new System.Windows.Forms.ComboBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,7 +95,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1182, 40);
+            this.panel1.Size = new System.Drawing.Size(1185, 40);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -115,7 +115,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1182, 231);
+            this.panel2.Size = new System.Drawing.Size(1185, 231);
             this.panel2.TabIndex = 1;
             // 
             // groupBox1
@@ -300,12 +300,11 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 271);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1182, 417);
+            this.panel3.Size = new System.Drawing.Size(1185, 376);
             this.panel3.TabIndex = 2;
             // 
             // panel5
@@ -315,10 +314,9 @@
             this.panel5.Controls.Add(this.btnLuu);
             this.panel5.Controls.Add(this.btnXoa);
             this.panel5.Controls.Add(this.btnThem);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 363);
+            this.panel5.Location = new System.Drawing.Point(0, 644);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1182, 54);
+            this.panel5.Size = new System.Drawing.Size(1185, 57);
             this.panel5.TabIndex = 1;
             // 
             // btnIn
@@ -399,6 +397,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin các mặt hàng";
             // 
+            // cbPhuongThuc
+            // 
+            this.cbPhuongThuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPhuongThuc.FormattingEnabled = true;
+            this.cbPhuongThuc.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Ví điện tử"});
+            this.cbPhuongThuc.Location = new System.Drawing.Point(581, 311);
+            this.cbPhuongThuc.Name = "cbPhuongThuc";
+            this.cbPhuongThuc.Size = new System.Drawing.Size(195, 37);
+            this.cbPhuongThuc.TabIndex = 55;
+            this.cbPhuongThuc.SelectedIndexChanged += new System.EventHandler(this.cbPhuongThuc_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Blue;
+            this.label18.Location = new System.Drawing.Point(453, 316);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(122, 25);
+            this.label18.TabIndex = 54;
+            this.label18.Text = "Phương thức";
+            // 
             // txtTongTien
             // 
             this.txtTongTien.Location = new System.Drawing.Point(936, 311);
@@ -452,6 +474,7 @@
             this.dtgv.RowTemplate.Height = 24;
             this.dtgv.Size = new System.Drawing.Size(1090, 178);
             this.dtgv.TabIndex = 49;
+            this.dtgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellDoubleClick);
             this.dtgv.DoubleClick += new System.EventHandler(this.dtgv_DoubleClick);
             // 
             // label15
@@ -570,26 +593,14 @@
             this.label10.TabIndex = 37;
             this.label10.Text = "Mã sản phẩm";
             // 
-            // panel4
+            // label16
             // 
-            this.panel4.Controls.Add(this.btnTimKiem);
-            this.panel4.Controls.Add(this.cbbMaHDBan);
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 688);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1182, 65);
-            this.panel4.TabIndex = 3;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(600, 9);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(135, 42);
-            this.btnTimKiem.TabIndex = 2;
-            this.btnTimKiem.Text = "&Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(55, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(145, 29);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Mã hóa đơn:";
             // 
             // cbbMaHDBan
             // 
@@ -601,44 +612,32 @@
             this.cbbMaHDBan.TabIndex = 1;
             this.cbbMaHDBan.DropDown += new System.EventHandler(this.cbbMaHDBan_DropDown);
             // 
-            // label16
+            // btnTimKiem
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(55, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(145, 29);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Mã hóa đơn:";
+            this.btnTimKiem.Location = new System.Drawing.Point(600, 9);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(135, 42);
+            this.btnTimKiem.TabIndex = 2;
+            this.btnTimKiem.Text = "&Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // label18
+            // panel4
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Blue;
-            this.label18.Location = new System.Drawing.Point(453, 316);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(122, 25);
-            this.label18.TabIndex = 54;
-            this.label18.Text = "Phương thức";
-            // 
-            // cbPhuongThuc
-            // 
-            this.cbPhuongThuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPhuongThuc.FormattingEnabled = true;
-            this.cbPhuongThuc.Items.AddRange(new object[] {
-            "Tiền mặt",
-            "Ví điện tử"});
-            this.cbPhuongThuc.Location = new System.Drawing.Point(581, 311);
-            this.cbPhuongThuc.Name = "cbPhuongThuc";
-            this.cbPhuongThuc.Size = new System.Drawing.Size(195, 37);
-            this.cbPhuongThuc.TabIndex = 55;
-            this.cbPhuongThuc.SelectedIndexChanged += new System.EventHandler(this.cbPhuongThuc_SelectedIndexChanged);
+            this.panel4.Controls.Add(this.btnTimKiem);
+            this.panel4.Controls.Add(this.cbbMaHDBan);
+            this.panel4.Controls.Add(this.label16);
+            this.panel4.Location = new System.Drawing.Point(0, 702);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1182, 59);
+            this.panel4.TabIndex = 3;
             // 
             // frmHoaDonBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 746);
+            this.ClientSize = new System.Drawing.Size(1185, 762);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -703,10 +702,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dtgv;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.ComboBox cbbMaHDBan;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblBangChu;
@@ -719,5 +714,9 @@
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cbPhuongThuc;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cbbMaHDBan;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.Panel panel4;
     }
 }

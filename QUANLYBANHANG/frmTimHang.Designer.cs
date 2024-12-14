@@ -54,7 +54,7 @@
             this.txtTenSanPham.Name = "txtTenSanPham";
             this.txtTenSanPham.Size = new System.Drawing.Size(336, 34);
             this.txtTenSanPham.TabIndex = 45;
-            this.txtTenSanPham.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenHang_KeyPress);
+            this.txtTenSanPham.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenSanPham_KeyPress);
             // 
             // txtMaSanPham
             // 
@@ -140,6 +140,7 @@
             // 
             // cbbMaChatLieu
             // 
+            this.cbbMaChatLieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMaChatLieu.FormattingEnabled = true;
             this.cbbMaChatLieu.Location = new System.Drawing.Point(212, 131);
             this.cbbMaChatLieu.Name = "cbbMaChatLieu";

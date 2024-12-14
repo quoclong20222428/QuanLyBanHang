@@ -67,11 +67,13 @@ namespace QUANLYBANHANG
 
         private void Load_dtgv()
         {
-            string sql = "select hdb.MaSanPham,h.TenSanPham,hdb.SoLuong,h.DonGiaBan, hdb.GiamGia,hdb.ThanhTien from tblChiTietHDBan as hdb,tblHang as h where hdb.MaHDBan = N'" + txtMaHoaDon.Text + "' AND hdb.MaSanPham = h.MaSanPham";
+            string sql = "select hdb.MaSanPham,h.TenSanPham,hdb.SoLuong,h.DonGiaBan, hdb.GiamGia,hdb.ThanhTien " +
+                "from tblChiTietHDBan as hdb,tblHang as h " +
+                "where hdb.MaHDBan = N'" + txtMaHoaDon.Text + "' AND hdb.MaSanPham = h.MaSanPham";
             tblCTHDB = Functions.GetDataTable(sql);
             dtgv.DataSource = tblCTHDB;
-            dtgv.Columns[0].HeaderText = "Mã hàng";
-            dtgv.Columns[1].HeaderText = "Tên hàng";
+            dtgv.Columns[0].HeaderText = "Mã Sản phẩm";
+            dtgv.Columns[1].HeaderText = "Tên Sản phẩm";
             dtgv.Columns[2].HeaderText = "Số lượng";
             dtgv.Columns[3].HeaderText = "Đơn giá";
             dtgv.Columns[4].HeaderText = "Giảm giá %";
@@ -229,7 +231,7 @@ namespace QUANLYBANHANG
             sql = "select MaSanPham from tblChiTietHDBan where MaSanPham = N'" + cbbMaSanPham.SelectedValue + "' and MaHDBan = N'" + txtMaHoaDon.Text + "'";
             if (Functions.CheckKey(sql))
             {
-                MessageBox.Show("Mã hàng này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã Sản phẩm này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetValueHang();
                 cbbMaSanPham.Focus();
                 return;
@@ -435,7 +437,7 @@ namespace QUANLYBANHANG
             exRange.Range["A11:F11"].HorizontalAlignment = COMExecl.XlHAlign.xlHAlignCenter;
             exRange.Range["C11:F11"].ColumnWidth = 12;
             exRange.Range["A11:A11"].Value = "STT";
-            exRange.Range["B11:B11"].Value = "Tên hàng";
+            exRange.Range["B11:B11"].Value = "Tên Sản phẩm";
             exRange.Range["C11:C11"].Value = "Số lượng";
             exRange.Range["D11:D11"].Value = "Đơn giá";
             exRange.Range["E11:E11"].Value = "Giảm giá";
@@ -509,6 +511,55 @@ namespace QUANLYBANHANG
         private void cbPhuongThuc_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnXoaSanPham_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dtgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dtgv.Rows.Count)
+            {
+                DialogResult dialogResult = MessageBox.Show(
+                    "Bạn có chắc chắn muốn xóa sản phẩm này không?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // Get the product ID or key for deletion
+                    string maSanPham = dtgv.Rows[e.RowIndex].Cells["MaSanPham"].Value.ToString();
+                    string maHoaDon = txtMaHoaDon.Text;
+
+                    // SQL query to delete the item from tblChiTietHDBan
+                    string sqlDelete = $"DELETE FROM tblChiTietHDBan WHERE MaSanPham = N'{maSanPham}' AND MaHDBan = N'{maHoaDon}'";
+                    Functions.RunSQL(sqlDelete);
+
+                    // Update the product quantity back in tblHang
+                    double soLuongDeleted = Convert.ToDouble(dtgv.Rows[e.RowIndex].Cells["SoLuong"].Value);
+                    double slHienTai = Convert.ToDouble(Functions.GetFieldValues($"SELECT SoLuong FROM tblHang WHERE MaSanPham = N'{maSanPham}'"));
+                    double slMoi = slHienTai + soLuongDeleted;
+                    string sqlUpdateHang = $"UPDATE tblHang SET SoLuong = {slMoi} WHERE MaSanPham = N'{maSanPham}'";
+                    Functions.RunSQL(sqlUpdateHang);
+
+                    // Update total amount in tblHDBan
+                    double thanhTienDeleted = Convert.ToDouble(dtgv.Rows[e.RowIndex].Cells["ThanhTien"].Value);
+                    double tongTien = Convert.ToDouble(Functions.GetFieldValues($"SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'{maHoaDon}'"));
+                    double tongTienMoi = tongTien - thanhTienDeleted;
+                    string sqlUpdateTongTien = $"UPDATE tblHDBan SET TongTien = {tongTienMoi} WHERE MaHDBan = N'{maHoaDon}'";
+                    Functions.RunSQL(sqlUpdateTongTien);
+
+                    // Refresh the DataGridView
+                    Load_dtgv();
+
+                    // Update UI fields
+                    txtTongTien.Text = tongTienMoi.ToString();
+                    lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(tongTienMoi);
+                }
+            }
         }
     }
 }
