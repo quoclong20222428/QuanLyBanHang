@@ -164,6 +164,7 @@
             // 
             // cbbMaChatLieu
             // 
+            this.cbbMaChatLieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMaChatLieu.FormattingEnabled = true;
             this.cbbMaChatLieu.Location = new System.Drawing.Point(182, 186);
             this.cbbMaChatLieu.Name = "cbbMaChatLieu";
@@ -317,12 +318,15 @@
             // 
             // btnDong
             // 
+            this.btnDong.BackColor = System.Drawing.Color.LightCoral;
+            this.btnDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDong.Location = new System.Drawing.Point(1032, 32);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(102, 43);
             this.btnDong.TabIndex = 29;
             this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = true;
+            this.btnDong.UseVisualStyleBackColor = false;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnBoQua
@@ -413,7 +417,7 @@
             this.Name = "frmDanhMucHangHoa";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmDanhMucHangHoa";
+            this.Text = "Danh mục sản phẩm";
             this.Load += new System.EventHandler(this.frmDanhMucHangHoa_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

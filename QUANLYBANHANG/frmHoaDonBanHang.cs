@@ -245,11 +245,10 @@ namespace QUANLYBANHANG
                 txtSoLuong.Focus();
                 return;
             }
-            sql = " insert into tblChiTietHDBan (MaHDBan,MaSanPham,SoLuong,DonGia,GiamGia,ThanhTien,PhuongThuc) " +
+            sql = " insert into tblChiTietHDBan (MaHDBan,MaSanPham,SoLuong,DonGia,GiamGia,ThanhTien) " +
                                         "values (N'" + txtMaHoaDon.Text + "',N'" + cbbMaSanPham.SelectedValue +
                                                 "'," + txtSoLuong.Text + "," + txtDonGia.Text + "," + txtGiamGia.Text +
-                                                "," + txtThanhTien.Text +
-                                                ",N'" + cbPhuongThuc.SelectedItem.ToString() + "')";
+                                                "," + txtThanhTien.Text + ")";
             Functions.RunSQL(sql);
             Load_dtgv();
             // cap nhat so luong mat hang vao tblHang
@@ -559,6 +558,43 @@ namespace QUANLYBANHANG
                     txtTongTien.Text = tongTienMoi.ToString();
                     lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(tongTienMoi);
                 }
+            }
+        }
+
+        private void btnXoaSanPham_Click_1(object sender, EventArgs e)
+        {
+            string MaSanPhamXoa, sql;
+            Double ThanhTienXoa, SoLuongXoa, sl, slcon, tong, tongmoi;
+            if (tblCTHDB.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (dtgv.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if ((MessageBox.Show("Bạn có chắc muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+            {
+                MaSanPhamXoa = dtgv.CurrentRow.Cells["MaSanPham"].Value.ToString();
+                SoLuongXoa = Convert.ToDouble(dtgv.CurrentRow.Cells["SoLuong"].Value.ToString());
+                ThanhTienXoa = Convert.ToDouble(dtgv.CurrentRow.Cells["ThanhTien"].Value.ToString());
+                sql = "delete tblChiTietHDBan where MaHDBan =N'" + txtMaHoaDon.Text + "' and MaSanPham = N'" + MaSanPhamXoa + "'";
+                Functions.RunSQL(sql);
+                // cap nhat lai so luong mat hang
+                sl = Convert.ToDouble(Functions.GetFieldValues("select SoLuong from tblHang where MaSanPham = N'" + MaSanPhamXoa + "'"));
+                slcon = sl + SoLuongXoa;
+                sql = "update tblHang set SoLuong = " + slcon + " where MaSanPham = N'" + MaSanPhamXoa + "'";
+                Functions.RunSQL(sql);
+                // cap nhat lai tong tien cho hoa don ban
+                tong = Convert.ToDouble(Functions.GetFieldValues("select TongTien from tblHDBan where MaHDBan = N'" + txtMaHoaDon.Text + "'"));
+                tongmoi = tong - ThanhTienXoa;
+                sql = "update tblHDBan set TongTien = " + tongmoi + "where MaHDBan = N'" + txtMaHoaDon.Text + "'";
+                Functions.RunSQL(sql);
+                txtTongTien.Text = tongmoi.ToString();
+                lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(double.Parse(tongmoi.ToString()));
+                Load_dtgv();
             }
         }
     }

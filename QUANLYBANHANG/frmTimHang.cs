@@ -136,7 +136,7 @@ namespace QUANLYBANHANG
             else
             {
                 e.Handled = false;
-                errorProvider1.SetError(txtTenSanPham, "Nhập lại");
+                errorProvider1.SetError(txtTenSanPham, "Không để dư khoảng trắng đầu và cuối");
             }
         }
     }

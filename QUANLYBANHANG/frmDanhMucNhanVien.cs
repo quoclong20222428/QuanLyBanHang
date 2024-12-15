@@ -271,7 +271,7 @@ namespace QUANLYBANHANG
             else
             {
                 e.Handled = true;
-                errorProvider1.SetError(txtMaNhanVien, "Nhập lại");
+                errorProvider1.SetError(txtMaNhanVien, "Mã không được phép có khoảng trắng, các ký tự đặc biệt!");
             }
         }
 
@@ -284,8 +284,8 @@ namespace QUANLYBANHANG
             }
             else
             {
-                e.Handled = true;
-                errorProvider1.SetError(txtTenNhanVien, "Nhập lại");
+                e.Handled = false;
+                errorProvider1.SetError(txtTenNhanVien, "Không để dư khoảng trắng đầu và cuối");
             }
         }
 
@@ -298,8 +298,8 @@ namespace QUANLYBANHANG
             }
             else
             {
-                e.Handled = true;
-                errorProvider1.SetError(txtDiaChi, "Nhập lại");
+                e.Handled = false;
+                errorProvider1.SetError(txtDiaChi, "Không để dư khoảng trắng đầu và cuối");
             }
         }
     }

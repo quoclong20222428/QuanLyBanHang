@@ -145,7 +145,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fLogin";
+            this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.fLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

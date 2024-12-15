@@ -22,7 +22,7 @@ namespace QUANLYBANHANG.Class
             // kiem tra ket noi
             if (conn.State == ConnectionState.Open)
             {
-                MessageBox.Show("Kết nối thành công");
+                //MessageBox.Show("Kết nối thành công");
             }
             else MessageBox.Show("Không thể kết nối với dữ liệu");
         }

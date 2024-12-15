@@ -289,7 +289,7 @@ namespace QUANLYBANHANG
             else
             {
                 e.Handled = true;
-                errorProvider1.SetError(txtMaSanPham, "Nhập lại");
+                errorProvider1.SetError(txtMaSanPham, "Mã không được phép có khoảng trắng!");
             }
         }
 
@@ -302,8 +302,8 @@ namespace QUANLYBANHANG
             }
             else
             {
-                e.Handled = true;
-                errorProvider1.SetError(txtTenSanPham, "Nhập lại");
+                e.Handled = false;
+                errorProvider1.SetError(txtTenSanPham, "Không để dư khoảng trắng đầu và cuối");
             }
         }
 
@@ -312,7 +312,7 @@ namespace QUANLYBANHANG
             if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                errorProvider1.SetError(txtSoLuong, "Nhap lai so luong");
+                errorProvider1.SetError(txtSoLuong, "Chỉ nhận giá trị là số nguyên");
             }
             else
             {
@@ -326,7 +326,7 @@ namespace QUANLYBANHANG
             if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                errorProvider1.SetError(txtDonGiaNhap, "Nhap lai don gia nhap");
+                errorProvider1.SetError(txtDonGiaNhap, "Chỉ nhận giá trị là số nguyên");
             }
             else
             {
@@ -340,7 +340,7 @@ namespace QUANLYBANHANG
             if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                errorProvider1.SetError(txtDonGiaBan, "Nhap lai don gia ban");
+                errorProvider1.SetError(txtDonGiaBan, "Chỉ nhận giá trị là số nguyên");
             }
             else
             {

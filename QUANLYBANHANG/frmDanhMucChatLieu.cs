@@ -194,7 +194,7 @@ namespace QUANLYBANHANG
             else
             {
                 e.Handled = true;
-                errorProvider1.SetError(txtMaChatLieu, "Nhập lại");
+                errorProvider1.SetError(txtMaChatLieu, "Mã không được phép có khoảng trắng!");
             }
         }
 
@@ -207,8 +207,8 @@ namespace QUANLYBANHANG
             }
             else
             {
-                e.Handled = true;
-                errorProvider1.SetError(txtTenChatLieu, "Nhập lại");
+                e.Handled = false;
+                errorProvider1.SetError(txtTenChatLieu, "Không để dư khoảng trắng đầu và cuối");
             }
         }
     }
