@@ -50,8 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnHienThi = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
             this.btnBoQua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -61,6 +59,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvHang = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnHienThi = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.panel2.SuspendLayout();
@@ -284,7 +283,6 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btnHienThi);
-            this.panel2.Controls.Add(this.btnTimKiem);
             this.panel2.Controls.Add(this.btnDong);
             this.panel2.Controls.Add(this.btnBoQua);
             this.panel2.Controls.Add(this.btnLuu);
@@ -296,25 +294,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1203, 103);
             this.panel2.TabIndex = 1;
-            // 
-            // btnHienThi
-            // 
-            this.btnHienThi.Location = new System.Drawing.Point(888, 32);
-            this.btnHienThi.Name = "btnHienThi";
-            this.btnHienThi.Size = new System.Drawing.Size(102, 43);
-            this.btnHienThi.TabIndex = 31;
-            this.btnHienThi.Text = "Hiển thị DS";
-            this.btnHienThi.UseVisualStyleBackColor = true;
-            this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(744, 32);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(102, 43);
-            this.btnTimKiem.TabIndex = 30;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
             // 
             // btnDong
             // 
@@ -331,7 +310,7 @@
             // 
             // btnBoQua
             // 
-            this.btnBoQua.Location = new System.Drawing.Point(600, 32);
+            this.btnBoQua.Location = new System.Drawing.Point(715, 32);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(102, 43);
             this.btnBoQua.TabIndex = 28;
@@ -341,7 +320,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(456, 32);
+            this.btnLuu.Location = new System.Drawing.Point(531, 32);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(102, 43);
             this.btnLuu.TabIndex = 27;
@@ -351,7 +330,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(312, 32);
+            this.btnSua.Location = new System.Drawing.Point(382, 32);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(102, 43);
             this.btnSua.TabIndex = 26;
@@ -361,7 +340,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(168, 32);
+            this.btnXoa.Location = new System.Drawing.Point(207, 32);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(102, 43);
             this.btnXoa.TabIndex = 25;
@@ -403,6 +382,16 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnHienThi
+            // 
+            this.btnHienThi.Location = new System.Drawing.Point(888, 32);
+            this.btnHienThi.Name = "btnHienThi";
+            this.btnHienThi.Size = new System.Drawing.Size(102, 43);
+            this.btnHienThi.TabIndex = 31;
+            this.btnHienThi.Text = "Hiển thị";
+            this.btnHienThi.UseVisualStyleBackColor = true;
+            this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);
             // 
             // frmDanhMucHangHoa
             // 
@@ -452,17 +441,16 @@
         private System.Windows.Forms.TextBox txtAnh;
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.Button btnBoQua;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnHienThi;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dtgvHang;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnHienThi;
     }
 }
